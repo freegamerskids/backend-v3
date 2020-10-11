@@ -1,0 +1,30 @@
+{
+  "name": "backend-v3",
+  "version": "1.0.0",
+  "description": "Backend for elerium.cc v3",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsc & node ./build/index.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elerium-cc/backend-v3.git"
+  },
+  "author": "Stroketon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elerium-cc/backend-v3/issues"
+  },
+  "homepage": "https://github.com/elerium-cc/backend-v3#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/mongoose": "^5.7.36",
+    "typescript": "^4.0.3"
+  }
+}
