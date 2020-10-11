@@ -1,4 +1,4 @@
-import userModel, { IUser } from "../models/user.model";
+import userModel from "../models/user.model";
 import { Request, Response, NextFunction } from "express";
 
 export default async function middleware(req: Request, res: Response, next: NextFunction) {
