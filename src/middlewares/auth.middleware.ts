@@ -6,13 +6,15 @@ export default async function middleware(req: Request, res: Response, next: Next
   if (user) {
     if (user.banned) {
       return res.status(401).json({ 
-        success: false, message: `You are banned for "${user.banReason}"` 
+        success: false, 
+        message: `You are banned for "${user.banReason}"` 
       });
     };
     next();
   } else {
     res.status(401).json({ 
-      success: false, message: "You are not authorized"
+      success: false,
+      message: "You are not authorized"
     });
   };
 };
