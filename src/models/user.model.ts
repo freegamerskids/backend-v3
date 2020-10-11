@@ -8,7 +8,7 @@ export interface IUser extends Document {
   redeemedKey: String;
 };
 
-const userSchema: Schema = new Schema({
+const userSchema = new Schema({
   name: {
     type: String,
     required: true
