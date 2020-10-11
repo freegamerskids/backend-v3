@@ -5,7 +5,9 @@ export interface IUser extends Document {
   key: string;
   invites: number;
   invitedBy: any;
-  redeemedKey: String;
+  redeemedKey: string;
+  banned: boolean;
+  banReason: string;
 };
 
 const userSchema = new Schema({
@@ -22,7 +24,9 @@ const userSchema = new Schema({
     default: 0
   },
   invitedBy: SchemaTypes.ObjectId,
-  redeemedKey: String
+  redeemedKey: String,
+  banned: Boolean,
+  banReason: String
 });
 
 export default model<IUser>("users", userSchema);
