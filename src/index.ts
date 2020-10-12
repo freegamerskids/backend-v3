@@ -1,10 +1,15 @@
-import express, { Request, Response, Application } from "express";
+import express from "express";
+import { connect } from "mongoose";
 import { join } from "path";
 import { config } from "dotenv"; config({ path: join(__dirname, "../.env") });
+import userRouter from "./routes/user.router";
 const app = express();
 
-app.get("/", (req, res) => {
-  res.json({ success: true, message: "Welcome to the elerium.cc api" });
-});
+app.use("/users", userRouter);
 
-app.listen(process.env.PORT);
+connect(process.env.MONGO_URL!, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+  console.log("successfully connected to mongodb server");
+  app.listen(process.env.PORT, () => {
+    console.log("successfully started the http server");
+  });
+});
