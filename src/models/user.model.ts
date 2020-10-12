@@ -2,10 +2,13 @@ import { Types } from "mongoose"
 import { prop, getModelForClass } from "@typegoose/typegoose";
 
 export class User {
-  @prop({ required: true })
+  @prop()
   name?: string;
 
-  @prop({ required: true })
+  @prop({ default: false })
+  admin?: boolean;
+
+  @prop()
   key?: string;
 
   @prop({ default: 0 })

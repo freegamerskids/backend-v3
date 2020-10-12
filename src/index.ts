@@ -1,10 +1,10 @@
-import express from "express";
+import express, { json } from "express";
 import { connect } from "mongoose";
 import { join } from "path";
 import { config } from "dotenv"; config({ path: join(__dirname, "../.env") });
 import userRouter from "./routes/user.router";
 const app = express();
-
+app.use(json());
 app.use("/users", userRouter);
 
 connect(process.env.MONGO_URL!, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
