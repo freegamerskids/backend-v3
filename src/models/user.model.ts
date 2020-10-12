@@ -1,32 +1,31 @@
-import { model, Schema, Document, SchemaTypes } from "mongoose"
+import { Types } from "mongoose"
+import { prop, getModelForClass } from "@typegoose/typegoose";
 
-export interface IUser extends Document {
-  name: string;
-  key: string;
-  invites: number;
-  invitedBy: any;
-  redeemedKey: string;
-  banned: boolean;
-  banReason: string;
-};
+export class User {
+  @prop({ required: true })
+  name?: string;
 
-const userSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  key: {
-    required: true,
-    type: String
-  },
-  invites: {
-    type: Number,
-    default: 0
-  },
-  invitedBy: SchemaTypes.ObjectId,
-  redeemedKey: String,
-  banned: Boolean,
-  banReason: String
+  @prop({ required: true })
+  key?: string;
+
+  @prop({ default: 0 })
+  invites?: number;
+
+  @prop()
+  invitedBy?: Types.ObjectId;
+
+  @prop()
+  redeemedKey?: string;
+
+  @prop({ default: false })
+  banned?: boolean;
+
+  @prop()
+  banReason?: string;
+}
+
+export default getModelForClass(User, {
+  schemaOptions: {
+    collection: "users"
+  }
 });
-
-export default model<IUser>("users", userSchema);
