@@ -30,7 +30,7 @@ router.post("/create", authMiddleware({ ignoreUnauthorizedError: true }), async 
 
   let user = new userModel(); // i wanna do the typeorm way :( too lazy to switch to it tho
   user.key = generateString(18);
-  user.name = name; // thanks for typescript on making me cast that into a string because it errored
+  user.name = name;
   await user.save();
   res.json({ key: user.key });
 });
